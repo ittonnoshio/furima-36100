@@ -13,9 +13,9 @@
 | first_name_kana    | string  | null: false               |
 | birth              | date    | null: false               |
 
+### Association
 - has_many :items
 - has_many :buys
-- has_many :shipping_addresses
 
 ## itemsテーブル
 
@@ -31,6 +31,7 @@
 | price           | integer    | null: false                    |
 | user            | references | null: false, foreign_key: true |
 
+### Association
 - belongs_to :user
 - has_one :buy
 
@@ -41,6 +42,7 @@
 | item    | references | null: false, foreign_key: true |
 | user    | references | null: false, foreign_key: true |
 
+### Association
 - belongs_to :user
 - belongs_to :item
 - has_one :shipping_address
@@ -49,14 +51,13 @@
 
 | Column        | Type       | Options                        |
 | ------------- | ---------- | ------------------------------ |
-| zip_code      | integer    | null: false                    |
+| zip_code      | string     | null: false                    |
 | prefecture_id | integer    | null: false                    |
 | city          | string     | null: false                    |
 | house_num     | string     | null: false                    |
 | building      | string     |                                |
 | phone         | string     | null: false                    |
 | buy           | references | null: false, foreign_key: true |
-| user          | references | null: false, foreign_key: true |
 
+### Association
 - belongs_to :buy
-- belongs_to :user
