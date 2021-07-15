@@ -31,10 +31,10 @@ RSpec.describe User, type: :model do
         expect(@user.errors.full_messages).to include("Email can't be blank")
       end
 
-      it "emailに@がない場合は登録できないこと " do
+      it 'emailに@がない場合は登録できないこと ' do
         @user.email = 'testyahoo.com'
         @user.valid?
-        expect(@user.errors.full_messages).to include("Email is invalid")
+        expect(@user.errors.full_messages).to include('Email is invalid')
       end
 
       it '重複したemailが存在する場合登録できないこと' do
