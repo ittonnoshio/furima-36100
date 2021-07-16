@@ -1,7 +1,18 @@
 class Item < ApplicationRecord
   belongs_to :user
   has_one_attached :image
-  
+
+  with_options presence: true do
+    validates :name
+    validates :text
+    validates :category_id
+    validates :state_id
+    validates :shipping_fee_id
+    validates :prefecture_id
+    validates :shipping_day_id
+    validates :price, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters and numbers.' }
+  end
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
   belongs_to :state
