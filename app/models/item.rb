@@ -3,6 +3,7 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
+    validates :image
     validates :name
     validates :text
     validates :category_id
@@ -10,7 +11,7 @@ class Item < ApplicationRecord
     validates :shipping_fee_id
     validates :prefecture_id
     validates :shipping_day_id
-    validates :price, format: { with: /\A[0-9]+\z/, message: 'is invalid. Input half-width characters and numbers.' }
+    validates :price, numericality: true
   end
 
   extend ActiveHash::Associations::ActiveRecordExtensions
