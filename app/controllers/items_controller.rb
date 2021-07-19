@@ -1,9 +1,8 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, only: :new
-  before_action :move_to_sign_in, only: :new
+  before_action :authenticate_user!, only: [:new, :create]
 
   def index
-    @items = Item.includes(:user)
+    # @items = Item.includes(:user)
   end
 
   def new
@@ -17,10 +16,6 @@ class ItemsController < ApplicationController
     else
       render :new
     end
-  end
-
-  def move_to_sign_in
-    redirect_to new_user_session_path unless user_signed_in?
   end
 
   private
