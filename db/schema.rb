@@ -92,5 +92,5 @@ ActiveRecord::Schema.define(version: 2021_07_19_125947) do
   add_foreign_key "buys", "items"
   add_foreign_key "buys", "users"
   add_foreign_key "items", "users"
-  add_foreign_key "shipping_addresses", "buys"
+  add_foreign_key "addresses", "buys"
 end
