@@ -1,6 +1,6 @@
 class BuyAddress
   include ActiveModel::Model
-  attr_accessor :item_id, :user_id, :zip_code, :prefecture_id, :city, :house_num, :building, :phone
+  attr_accessor :item_id, :user_id, :zip_code, :prefecture_id, :city, :house_num, :building, :phone, :token
 
   with_options presence: true do
     validates :item_id
