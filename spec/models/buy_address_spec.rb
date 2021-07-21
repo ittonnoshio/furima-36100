@@ -6,7 +6,7 @@ RSpec.describe BuyAddress, type: :model do
       user = FactoryBot.create(:user)
       item = FactoryBot.create(:item)
       @buy_address = FactoryBot.build(:buy_address, user_id: user.id, item_id: item.id)
-      sleep 0.1 
+      sleep 0.1
     end
 
     context '内容に問題ない場合' do
@@ -20,7 +20,7 @@ RSpec.describe BuyAddress, type: :model do
     end
 
     context '内容に問題がある場合' do
-      it "tokenが空では登録できないこと" do
+      it 'tokenが空では登録できないこと' do
         @buy_address.token = nil
         @buy_address.valid?
         expect(@buy_address.errors.full_messages).to include("Token can't be blank")
@@ -39,7 +39,7 @@ RSpec.describe BuyAddress, type: :model do
       it 'prefectureを選択していないと保存できないこと' do
         @buy_address.prefecture_id = 1
         @buy_address.valid?
-        expect(@buy_address.errors.full_messages).to include("Prefecture Select")
+        expect(@buy_address.errors.full_messages).to include('Prefecture Select')
       end
       it 'cityが空だと保存できないこと' do
         @buy_address.city = ''

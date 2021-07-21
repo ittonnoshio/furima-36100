@@ -11,11 +11,11 @@ class Item < ApplicationRecord
                       numericality: { only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, message: 'is invalid' }
   end
 
-    validates :category_id, numericality: { other_than: 1 }
-    validates :state_id, numericality: { other_than: 1 }
-    validates :shipping_fee_id, numericality: { other_than: 1 }
-    validates :prefecture_id, numericality: { other_than: 1 }
-    validates :shipping_day_id, numericality: { other_than: 1 }
+  validates :category_id, numericality: { other_than: 1 }
+  validates :state_id, numericality: { other_than: 1 }
+  validates :shipping_fee_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :shipping_day_id, numericality: { other_than: 1 }
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
