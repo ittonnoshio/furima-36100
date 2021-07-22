@@ -1,6 +1,6 @@
 class BuysController < ApplicationController
   before_action :authenticate_user!, only: [:index, :create]
-  before_action :set_item, only: [:index, :create, :move_to_index, :move_to_index_soldout]
+  before_action :set_item, only: [:index, :create]
   before_action :move_to_index, only: [:index, :create]
   before_action :move_to_index_soldout, only: [:index, :create]
 
@@ -19,14 +19,6 @@ class BuysController < ApplicationController
     end
   end
 
-  def move_to_index
-    redirect_to root_path if current_user.id == @item.user_id
-  end
-
-  def move_to_index_soldout
-    redirect_to root_path if current_user.id != @item.user_id && @item.buy.present?
-  end
-
   private
 
   def buy_params
@@ -37,6 +29,14 @@ class BuysController < ApplicationController
 
   def set_item
     @item = Item.find(params[:item_id])
+  end
+
+  def move_to_index
+    redirect_to root_path if current_user.id == @item.user_id
+  end
+
+  def move_to_index_soldout
+    redirect_to root_path if current_user.id != @item.user_id && @item.buy.present?
   end
 
   def pay_item
